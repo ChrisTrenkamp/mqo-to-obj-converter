@@ -123,7 +123,7 @@ func writeObjFaceWithoutUvCoordinates(out io.Writer, i *Face, end, vertexOffset 
 
 func writeObjFaceWithUvCoordinates(out io.Writer, i *Face, end, vertexOffset, currentUvCoordinateIndex int) error {
 	for start := 0; start < len(i.TextureCoordinates); start += 2 {
-		_, err := fmt.Fprintf(out, "vt %f %f\n", i.TextureCoordinates[start], i.TextureCoordinates[start+1])
+		_, err := fmt.Fprintf(out, "vt %f %f\n", i.TextureCoordinates[start], 1-i.TextureCoordinates[start+1])
 
 		if err != nil {
 			return err
